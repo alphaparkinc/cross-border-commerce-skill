@@ -1,0 +1,65 @@
+{
+  "name": "cross-border-commerce-skill",
+  "version": "1.0.0",
+  "description": "Handle cross-border e-commerce: multi-currency conversion, import duties estimation, international shipping cost calculation, and compliance checks.",
+  "author": "alphaparkinc",
+  "category": "operations",
+  "tags": [
+    "cross-border",
+    "international",
+    "currency",
+    "duties",
+    "shipping"
+  ],
+  "inputs": {
+    "order_value_usd": {
+      "type": "number",
+      "description": "Order value in USD."
+    },
+    "destination_country": {
+      "type": "string",
+      "description": "ISO 2-letter country code (e.g. GB, DE, JP, AU)."
+    },
+    "product_category": {
+      "type": "string",
+      "description": "Product category for duty rate lookup."
+    },
+    "weight_kg": {
+      "type": "number",
+      "description": "Package weight in kilograms."
+    },
+    "shipping_method": {
+      "type": "string",
+      "enum": [
+        "standard",
+        "express",
+        "economy"
+      ],
+      "description": "Shipping method."
+    }
+  },
+  "outputs": {
+    "local_price": {
+      "type": "object",
+      "description": "Order value in local currency."
+    },
+    "duties": {
+      "type": "object",
+      "description": "Estimated import duties and VAT/GST."
+    },
+    "shipping": {
+      "type": "object",
+      "description": "Shipping cost and estimated days."
+    },
+    "total_landed_cost": {
+      "type": "number",
+      "description": "Total cost including duties and shipping."
+    },
+    "compliance_notes": {
+      "type": "array",
+      "description": "Country-specific compliance notes."
+    }
+  },
+  "entrypoint": "client.py",
+  "example": "example_usage.py"
+}
